@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Signup" tests="9" time="1.828">
+  <testsuite name="signup - cenarios de exceção / Email_cadastrado / Signup" id="ad3398f4-b5a6-4093-bcbb-4bee7302b999" timestamp="2023-10-16T23:39:49.779Z" tests="5" failures="0" errors="0" time="0.535">
+    <testcase name="Status code is 200" time="0.535" classname="Signup"/>
+    <testcase name="Check fullName is true" time="0.535" classname="Signup"/>
+    <testcase name="Check mail is true" time="0.535" classname="Signup"/>
+    <testcase name="Check accessProfile is true" time="0.535" classname="Signup"/>
+    <testcase name="Check idCompany is true" time="0.535" classname="Signup"/>
+  </testsuite>
+  <testsuite name="signup - cenarios de exceção / Email_cadastrado / Signup Email cadastrado" id="99a2bfc9-f0ea-430d-9ac6-f7248e8577c3" timestamp="2023-10-16T23:39:49.779Z" tests="2" failures="0" errors="0" time="0.296">
+    <testcase name="Status code is 400" time="0.296" classname="Signup"/>
+    <testcase name="Check fullName is true" time="0.296" classname="Signup"/>
+  </testsuite>
+  <testsuite name="signup - cenarios de exceção / Signup - Fullname null" id="2c88dcc8-03c7-4a2f-8745-988cda984af0" timestamp="2023-10-16T23:39:49.779Z" tests="2" failures="1" errors="0" time="0.274">
+    <testcase name="Status code is 400" time="0.274" classname="Signup"/>
+    <testcase name="Check fullName is true" time="0.274" classname="Signup">
+      <failure type="AssertionFailure" message="Cannot read properties of undefined (reading '0')">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 3873d25a-b61c-4fef-be39-30b5d7a704d0.]]>
+        <![CDATA[Collection name: Signup.]]>
+        <![CDATA[Request name: signup - cenarios de exceção / Signup - Fullname null.]]>
+        <![CDATA[Test description: Check fullName is true.]]>
+        <![CDATA[Error message: Cannot read properties of undefined (reading '0').]]>
+        <![CDATA[Stacktrace: TypeError: Cannot read properties of undefined (reading '0')
+   at Object.eval sandbox-script.js:2:3).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="signup - cenarios de exceção / Signup - Email informado invalido" id="a43dc0a4-d865-494f-8206-b09cd8a6a068" timestamp="2023-10-16T23:39:49.779Z" tests="2" failures="0" errors="0" time="0.020">
+    <testcase name="Status code is 400" time="0.020" classname="Signup"/>
+    <testcase name="Check EmailInvalido is true" time="0.020" classname="Signup"/>
+  </testsuite>
+  <testsuite name="signup - cenarios de exceção / Signup - Email fora do padrão" id="7d760adb-5353-45f6-ac75-76c667769b83" timestamp="2023-10-16T23:39:49.779Z" tests="2" failures="0" errors="0" time="0.019">
+    <testcase name="Status code is 400" time="0.019" classname="Signup"/>
+    <testcase name="Check EmailInvalido is true" time="0.019" classname="Signup"/>
+  </testsuite>
+  <testsuite name="signup - cenarios de exceção / Signup - Senha nulo" id="8e36caa5-b40a-43be-a07c-94d744fe9d37" timestamp="2023-10-16T23:39:49.779Z" tests="2" failures="0" errors="0" time="0.012">
+    <testcase name="Status code is 400" time="0.012" classname="Signup"/>
+    <testcase name="Check Password is true" time="0.012" classname="Signup"/>
+  </testsuite>
+  <testsuite name="login - cenarios de exceção / Login -  Email null" id="c8ad2cef-f429-4595-92b0-d27d9ddf3f1e" timestamp="2023-10-16T23:39:49.779Z" tests="2" failures="0" errors="0" time="0.030">
+    <testcase name="Status code is 400" time="0.030" classname="Signup"/>
+    <testcase name="Check mail is true" time="0.030" classname="Signup"/>
+  </testsuite>
+  <testsuite name="Signup - Cadastro com sucesso" id="ec8f1c66-29f3-4ed8-9f77-d6d3143fc53c" timestamp="2023-10-16T23:39:49.779Z" tests="5" failures="0" errors="0" time="0.458">
+    <testcase name="Status code is 200" time="0.458" classname="Signup"/>
+    <testcase name="Check fullName is true" time="0.458" classname="Signup"/>
+    <testcase name="Check mail is true" time="0.458" classname="Signup"/>
+    <testcase name="Check accessProfile is true" time="0.458" classname="Signup"/>
+    <testcase name="Check idCompany is true" time="0.458" classname="Signup"/>
+  </testsuite>
+  <testsuite name="Login -  Com sucesso" id="adbd7a19-38c7-4aa6-a416-f3d2d00b1ec7" timestamp="2023-10-16T23:39:49.779Z" tests="5" failures="0" errors="0" time="0.184">
+    <testcase name="Status code is 200" time="0.184" classname="Signup"/>
+    <testcase name="Check fullName is true" time="0.184" classname="Signup"/>
+    <testcase name="Check mail is true" time="0.184" classname="Signup"/>
+    <testcase name="Check accessProfile is true" time="0.184" classname="Signup"/>
+    <testcase name="Check idCompany is true" time="0.184" classname="Signup"/>
+  </testsuite>
+</testsuites>

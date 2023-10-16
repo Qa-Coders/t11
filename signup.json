@@ -1,0 +1,758 @@
+{
+	"info": {
+		"_postman_id": "3873d25a-b61c-4fef-be39-30b5d7a704d0",
+		"name": "Signup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2699813"
+	},
+	"item": [
+		{
+			"name": "signup - cenarios de exceção",
+			"item": [
+				{
+					"name": "Email_cadastrado",
+					"item": [
+						{
+							"name": "Signup",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											"let create_array = (total, numero) => Array.from(Array(total), () => number_random(numero));\r",
+											"let number_random = (number) => (Math.round(Math.random() * number));\r",
+											"let mod = (dividendo, divisor) => Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));\r",
+											"\r",
+											"function gera() {\r",
+											"  document.form_main.numero.value = (document.form_main.tipo[0].checked) ? cpf() : cnpj();\r",
+											"}\r",
+											"\r",
+											"function cnpj() {\r",
+											"  let total_array = 8;\r",
+											"  let n = 9;\r",
+											"  let [n1, n2, n3, n4, n5, n6, n7, n8] = create_array(total_array, n);\r",
+											"  let n9 = 0;\r",
+											"  let n10 = 0;\r",
+											"  let n11 = 0;\r",
+											"  let n12 = 1;\r",
+											"\r",
+											"  let d1 = n12 * 2 + n11 * 3 + n10 * 4 + n9 * 5 + n8 * 6 + n7 * 7 + n6 * 8 + n5 * 9 + n4 * 2 + n3 * 3 + n2 * 4 + n1 * 5;\r",
+											"  d1 = 11 - (mod(d1, 11));\r",
+											"  if (d1 >= 10) d1 = 0;\r",
+											"\r",
+											"  let d2 = d1 * 2 + n12 * 3 + n11 * 4 + n10 * 5 + n9 * 6 + n8 * 7 + n7 * 8 + n6 * 9 + n5 * 2 + n4 * 3 + n3 * 4 + n2 * 5 + n1 * 6;\r",
+											"  d2 = 11 - (mod(d2, 11));\r",
+											"  if (d2 >= 10) d2 = 0;\r",
+											"\r",
+											"    mask=false\r",
+											"  if (mask===true)\r",
+											"    return `${n1}${n2}.${n3}${n4}${n5}.${n6}${n7}${n8}/${n9}${n10}${n11}${n12}-${d1}${d2}`;\r",
+											"  else\r",
+											"    return `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${n9}${n10}${n11}${n12}${d1}${d2}`;\r",
+											"}\r",
+											"\r",
+											"pm.environment.set(\"IdCompany\", cnpj())\r",
+											"\r",
+											"\r",
+											"pm.environment.set(\"AccessProfile\", pm.variables.replaceIn('{{$randomInt}}') + \"_\" + pm.variables.replaceIn('{{$randomJobDescriptor}}')  )\r",
+											"\r",
+											"\r",
+											"function firstName() {\r",
+											"\r",
+											"    var firstName = [\"Miguel\",\"Sophia\",\"Davi\",\"Alice\",\"Arthur\",\"Julia\",\"Pedro\",\"Isabella\",\"Gabriel\",\"Manuela\",\"Bernardo\",\"Laura\",\"Lucas\",\"Flávia\",\"Luiza\",\"Matheus\",\"Noah\", \"Valentina\",\"Rafael\",\"Giovanna\",\"Heitor\",\"Enzo\",\"Helena\",\"Guilherme\",\"Beatriz\",\"Nicolas\",\"Leticia\",\"Lorenzo\",\"Lara\",\"Gustavo\",\"Mariana\",\"Felipe\",\"Nicole\",\"Samuel\",\"Joice\", \"Dener\",\"Rafaela\",\"Augusto\",\"Heloísa\",\"Daniel\",\"Isadora\",\"Vitor\",\"Lívia\",\"Leonardo\",\"Henrique\",\"Juliana\",\"Theo\",\"Lorena\",\"Murilo\",\"Gabriela\",\"Eduardo\",\"Yasmin\",\"Pedro\", \"Henriqueta\",\"Isabelly\",\"Pietro\",\"Sarah\",\"Kauã\",\"Jaqueline\",\"Isaac\",\"Letícia\",\"Caio\",\"Mariele\",\"Vinicius\",\"Melissa\",\"Benjamin\",\"Marina\",\"João\",\"Clara\",\"Lucca\",\"Cecília\",\"Miguel\",\"Esther\",\"Bryan\",\"Emanuelly\",\"Joaquim\",\"Rebeca\",\"Victor\",\"Bella\",\"Thiago\",\"Lavínia\",\"Antônio\",\"Vitória\",\"Mario\",\"Bianca\",\"Francisco\",\"Catarina\",\"Ronaldo\",\"Larissa\",\"Bruno\",\"Margarida\",\"Emanuel\",\"Fernanda\",\"Marcos\",\"Amanda\",\"Ian\",\"Alícia\",\"Luiz\",\"Carolina\",\"Rodrigo\",\"Agatha\",\"Otávio\",\"Gabrielly\", \"Tiago\"];\r",
+											"\r",
+											"    var randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+											"    \r",
+											"    return randomItem; \r",
+											"}\r",
+											"    \r",
+											"pm.environment.set(\"FirstName\", firstName());\r",
+											"\r",
+											"function lastName() {\r",
+											"\r",
+											"    var lastName = [\"Alves da Silva\", \"Andrade Barbosa\", \"Barbosa Oliveira\", \"Oliveira da Silva\", \"Alves Pereira\", \"Conceição Barbosa\", \"Allen Young\", \"Hernandez King\", \"Wright Lopez\", \"Hill Scott\", \"Green Adams\", \"Conceição da Costa\", \"da Costa Oliveira\", \"Rodrigues de Oliveira\", \"Amaral Neto de Souza\", \"Pereira da Conceição\", \"Barros Neto de Andrade\", \"Borges de Andrade Pereira da Silva\", \"Batista Campos do Amaral\", \"Cardoso de Oliveira\", \"Pontes Guimarães\", \"Dias de Jesus\", \"Barbos de Lima\", \"Gonçalves da Silva\", \"Gonsalves de Lima\", \"Pereira de Oliveira Batista\", \"Dias de Freitas\", \"Ferreira\", \"Garcia da Paixão\", \"Lima Lopes\", \"Jesus da Silva\", \"da Silva de Lima\", \"da Silva Gonsalves Texeira\", \"Fernandes de Paula\", \"de Paula da Silva\", \"Barbosa de Mello Oliveira\", \"Oliveira Neto Conceição da Paixão\"];\r",
+											"\r",
+											"    var randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+											"    \r",
+											"    return randomItem; \r",
+											"}\r",
+											"    \r",
+											"pm.environment.set(\"LastName\", lastName());\r",
+											"\r",
+											"pm.environment.set(\"FullName\", pm.variables.get(\"FirstName\") + \" \" + pm.variables.get(\"LastName\"));\r",
+											"\r",
+											"function mail() {\r",
+											"    pm.environment.set(\"Mail\", pm.variables.replaceIn('{{$guid}}') + \"_\" + pm.variables.get(\"FirstName\") + \"@qacoders-treinamento.com\");\r",
+											"}\r",
+											"\r",
+											"mail()\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check fullName is true\", function () {\r",
+											"    pm.expect(pm.variables.get(\"FullName\")).to.eql(JSON.parse(responseBody).user.fullName)\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check mail is true\", function () {\r",
+											"    pm.expect(pm.variables.get(\"Mail\")).to.eql(JSON.parse(responseBody).user.mail)\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check accessProfile is true\", function () {\r",
+											"    pm.expect(pm.variables.get(\"AccessProfile\")).to.eql(JSON.parse(responseBody).user.accessProfile)\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check idCompany is true\", function () {\r",
+											"    pm.expect(pm.variables.get(\"IdCompany\")).to.eql(JSON.parse(responseBody).user.idCompany)\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signup Email cadastrado",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check fullName is true\", function () {\r",
+											"    pm.expect(pm.variables.get(\"UsuarioCadastrado\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Signup - Fullname null",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"function mail() {\r",
+									"    pm.environment.set(\"Mail\", pm.variables.replaceIn('{{$guid}}') + \"_\" + pm.variables.get(\"FirstName\") + \"@qacoders-treinamento.com\");\r",
+									"}\r",
+									"\r",
+									"mail()"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check fullName is true\", function () {\r",
+									"    pm.expect(pm.variables.get(\"FullNameObrigatorio\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup - Email informado invalido",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"function mail() {\r",
+									"    pm.environment.set(\"Mail\", pm.variables.replaceIn('{{$guid}}') + \"_\" + pm.variables.get(\"FirstName\") + \"@qacoders-treinamento.com\");\r",
+									"}\r",
+									"\r",
+									"mail()"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check EmailInvalido is true\", function () {\r",
+									"    pm.expect(pm.variables.get(\"EmailInvalido\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"\",\r\n  \"password\": \"{{Password}}\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup - Email fora do padrão",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check EmailInvalido is true\", function () {\r",
+									"    pm.expect(pm.variables.get(\"EmailInvalido\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"teste.com.br\",\r\n  \"password\": \"{{Password}}\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup - Senha nulo",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"function mail() {\r",
+									"    pm.environment.set(\"Mail\", pm.variables.replaceIn('{{$guid}}') + \"_\" + pm.variables.get(\"FirstName\") + \"@qacoders-treinamento.com\");\r",
+									"}\r",
+									"\r",
+									"mail()"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Password is true\", function () {\r",
+									"    pm.expect(pm.variables.get(\"PasswordNull\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login - cenarios de exceção",
+			"item": [
+				{
+					"name": "Login -  Email null",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"let create_array = (total, numero) => Array.from(Array(total), () => number_random(numero));\r",
+									"let number_random = (number) => (Math.round(Math.random() * number));\r",
+									"let mod = (dividendo, divisor) => Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));\r",
+									"\r",
+									"function gera() {\r",
+									"  document.form_main.numero.value = (document.form_main.tipo[0].checked) ? cpf() : cnpj();\r",
+									"}\r",
+									"\r",
+									"function cnpj() {\r",
+									"  let total_array = 8;\r",
+									"  let n = 9;\r",
+									"  let [n1, n2, n3, n4, n5, n6, n7, n8] = create_array(total_array, n);\r",
+									"  let n9 = 0;\r",
+									"  let n10 = 0;\r",
+									"  let n11 = 0;\r",
+									"  let n12 = 1;\r",
+									"\r",
+									"  let d1 = n12 * 2 + n11 * 3 + n10 * 4 + n9 * 5 + n8 * 6 + n7 * 7 + n6 * 8 + n5 * 9 + n4 * 2 + n3 * 3 + n2 * 4 + n1 * 5;\r",
+									"  d1 = 11 - (mod(d1, 11));\r",
+									"  if (d1 >= 10) d1 = 0;\r",
+									"\r",
+									"  let d2 = d1 * 2 + n12 * 3 + n11 * 4 + n10 * 5 + n9 * 6 + n8 * 7 + n7 * 8 + n6 * 9 + n5 * 2 + n4 * 3 + n3 * 4 + n2 * 5 + n1 * 6;\r",
+									"  d2 = 11 - (mod(d2, 11));\r",
+									"  if (d2 >= 10) d2 = 0;\r",
+									"\r",
+									"    mask=false\r",
+									"  if (mask===true)\r",
+									"    return `${n1}${n2}.${n3}${n4}${n5}.${n6}${n7}${n8}/${n9}${n10}${n11}${n12}-${d1}${d2}`;\r",
+									"  else\r",
+									"    return `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${n9}${n10}${n11}${n12}${d1}${d2}`;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"IdCompany\", cnpj())\r",
+									"\r",
+									"\r",
+									"pm.environment.set(\"AccessProfile\", pm.variables.replaceIn('{{$randomInt}}') + \"_\" + pm.variables.replaceIn('{{$randomJobDescriptor}}')  )\r",
+									"\r",
+									"\r",
+									"function firstName() {\r",
+									"\r",
+									"    var firstName = [\"Miguel\",\"Sophia\",\"Davi\",\"Alice\",\"Arthur\",\"Julia\",\"Pedro\",\"Isabella\",\"Gabriel\",\"Manuela\",\"Bernardo\",\"Laura\",\"Lucas\",\"Flávia\",\"Luiza\",\"Matheus\",\"Noah\", \"Valentina\",\"Rafael\",\"Giovanna\",\"Heitor\",\"Enzo\",\"Helena\",\"Guilherme\",\"Beatriz\",\"Nicolas\",\"Leticia\",\"Lorenzo\",\"Lara\",\"Gustavo\",\"Mariana\",\"Felipe\",\"Nicole\",\"Samuel\",\"Joice\", \"Dener\",\"Rafaela\",\"Augusto\",\"Heloísa\",\"Daniel\",\"Isadora\",\"Vitor\",\"Lívia\",\"Leonardo\",\"Henrique\",\"Juliana\",\"Theo\",\"Lorena\",\"Murilo\",\"Gabriela\",\"Eduardo\",\"Yasmin\",\"Pedro\", \"Henriqueta\",\"Isabelly\",\"Pietro\",\"Sarah\",\"Kauã\",\"Jaqueline\",\"Isaac\",\"Letícia\",\"Caio\",\"Mariele\",\"Vinicius\",\"Melissa\",\"Benjamin\",\"Marina\",\"João\",\"Clara\",\"Lucca\",\"Cecília\",\"Miguel\",\"Esther\",\"Bryan\",\"Emanuelly\",\"Joaquim\",\"Rebeca\",\"Victor\",\"Bella\",\"Thiago\",\"Lavínia\",\"Antônio\",\"Vitória\",\"Mario\",\"Bianca\",\"Francisco\",\"Catarina\",\"Ronaldo\",\"Larissa\",\"Bruno\",\"Margarida\",\"Emanuel\",\"Fernanda\",\"Marcos\",\"Amanda\",\"Ian\",\"Alícia\",\"Luiz\",\"Carolina\",\"Rodrigo\",\"Agatha\",\"Otávio\",\"Gabrielly\", \"Tiago\"];\r",
+									"\r",
+									"    var randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"    \r",
+									"    return randomItem; \r",
+									"}\r",
+									"    \r",
+									"pm.environment.set(\"FirstName\", firstName());\r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"    var lastName = [\"Alves da Silva\", \"Andrade Barbosa\", \"Barbosa Oliveira\", \"Oliveira da Silva\", \"Alves Pereira\", \"Conceição Barbosa\", \"Allen Young\", \"Hernandez King\", \"Wright Lopez\", \"Hill Scott\", \"Green Adams\", \"Conceição da Costa\", \"da Costa Oliveira\", \"Rodrigues de Oliveira\", \"Amaral Neto de Souza\", \"Pereira da Conceição\", \"Barros Neto de Andrade\", \"Borges de Andrade Pereira da Silva\", \"Batista Campos do Amaral\", \"Cardoso de Oliveira\", \"Pontes Guimarães\", \"Dias de Jesus\", \"Barbos de Lima\", \"Gonçalves da Silva\", \"Gonsalves de Lima\", \"Pereira de Oliveira Batista\", \"Dias de Freitas\", \"Ferreira\", \"Garcia da Paixão\", \"Lima Lopes\", \"Jesus da Silva\", \"da Silva de Lima\", \"da Silva Gonsalves Texeira\", \"Fernandes de Paula\", \"de Paula da Silva\", \"Barbosa de Mello Oliveira\", \"Oliveira Neto Conceição da Paixão\"];\r",
+									"\r",
+									"    var randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"    \r",
+									"    return randomItem; \r",
+									"}\r",
+									"    \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.variables.get(\"FirstName\") + \" \" + pm.variables.get(\"LastName\"));\r",
+									"\r",
+									"function mail() {\r",
+									"    pm.environment.set(\"Mail\", pm.variables.replaceIn('{{$guid}}') + \"_\" + pm.variables.get(\"FirstName\") + \"@qacoders-treinamento.com\");\r",
+									"}\r",
+									"\r",
+									"mail()\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check mail is true\", function () {\r",
+									"    pm.expect(pm.variables.get(\"EmailNull\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mail\": \"\",\r\n  \"password\": \"{{Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Signup - Cadastro com sucesso",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"let create_array = (total, numero) => Array.from(Array(total), () => number_random(numero));\r",
+							"let number_random = (number) => (Math.round(Math.random() * number));\r",
+							"let mod = (dividendo, divisor) => Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));\r",
+							"\r",
+							"function gera() {\r",
+							"  document.form_main.numero.value = (document.form_main.tipo[0].checked) ? cpf() : cnpj();\r",
+							"}\r",
+							"\r",
+							"function cnpj() {\r",
+							"  let total_array = 8;\r",
+							"  let n = 9;\r",
+							"  let [n1, n2, n3, n4, n5, n6, n7, n8] = create_array(total_array, n);\r",
+							"  let n9 = 0;\r",
+							"  let n10 = 0;\r",
+							"  let n11 = 0;\r",
+							"  let n12 = 1;\r",
+							"\r",
+							"  let d1 = n12 * 2 + n11 * 3 + n10 * 4 + n9 * 5 + n8 * 6 + n7 * 7 + n6 * 8 + n5 * 9 + n4 * 2 + n3 * 3 + n2 * 4 + n1 * 5;\r",
+							"  d1 = 11 - (mod(d1, 11));\r",
+							"  if (d1 >= 10) d1 = 0;\r",
+							"\r",
+							"  let d2 = d1 * 2 + n12 * 3 + n11 * 4 + n10 * 5 + n9 * 6 + n8 * 7 + n7 * 8 + n6 * 9 + n5 * 2 + n4 * 3 + n3 * 4 + n2 * 5 + n1 * 6;\r",
+							"  d2 = 11 - (mod(d2, 11));\r",
+							"  if (d2 >= 10) d2 = 0;\r",
+							"\r",
+							"    mask=false\r",
+							"  if (mask===true)\r",
+							"    return `${n1}${n2}.${n3}${n4}${n5}.${n6}${n7}${n8}/${n9}${n10}${n11}${n12}-${d1}${d2}`;\r",
+							"  else\r",
+							"    return `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${n9}${n10}${n11}${n12}${d1}${d2}`;\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"IdCompany\", cnpj())\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"AccessProfile\", pm.variables.replaceIn('{{$randomInt}}') + \"_\" + pm.variables.replaceIn('{{$randomJobDescriptor}}')  )\r",
+							"\r",
+							"\r",
+							"function firstName() {\r",
+							"\r",
+							"    var firstName = [\"Miguel\",\"Sophia\",\"Davi\",\"Alice\",\"Arthur\",\"Julia\",\"Pedro\",\"Isabella\",\"Gabriel\",\"Manuela\",\"Bernardo\",\"Laura\",\"Lucas\",\"Flávia\",\"Luiza\",\"Matheus\",\"Noah\", \"Valentina\",\"Rafael\",\"Giovanna\",\"Heitor\",\"Enzo\",\"Helena\",\"Guilherme\",\"Beatriz\",\"Nicolas\",\"Leticia\",\"Lorenzo\",\"Lara\",\"Gustavo\",\"Mariana\",\"Felipe\",\"Nicole\",\"Samuel\",\"Joice\", \"Dener\",\"Rafaela\",\"Augusto\",\"Heloísa\",\"Daniel\",\"Isadora\",\"Vitor\",\"Lívia\",\"Leonardo\",\"Henrique\",\"Juliana\",\"Theo\",\"Lorena\",\"Murilo\",\"Gabriela\",\"Eduardo\",\"Yasmin\",\"Pedro\", \"Henriqueta\",\"Isabelly\",\"Pietro\",\"Sarah\",\"Kauã\",\"Jaqueline\",\"Isaac\",\"Letícia\",\"Caio\",\"Mariele\",\"Vinicius\",\"Melissa\",\"Benjamin\",\"Marina\",\"João\",\"Clara\",\"Lucca\",\"Cecília\",\"Miguel\",\"Esther\",\"Bryan\",\"Emanuelly\",\"Joaquim\",\"Rebeca\",\"Victor\",\"Bella\",\"Thiago\",\"Lavínia\",\"Antônio\",\"Vitória\",\"Mario\",\"Bianca\",\"Francisco\",\"Catarina\",\"Ronaldo\",\"Larissa\",\"Bruno\",\"Margarida\",\"Emanuel\",\"Fernanda\",\"Marcos\",\"Amanda\",\"Ian\",\"Alícia\",\"Luiz\",\"Carolina\",\"Rodrigo\",\"Agatha\",\"Otávio\",\"Gabrielly\", \"Tiago\"];\r",
+							"\r",
+							"    var randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+							"    \r",
+							"    return randomItem; \r",
+							"}\r",
+							"    \r",
+							"pm.environment.set(\"FirstName\", firstName());\r",
+							"\r",
+							"function lastName() {\r",
+							"\r",
+							"    var lastName = [\"Alves da Silva\", \"Andrade Barbosa\", \"Barbosa Oliveira\", \"Oliveira da Silva\", \"Alves Pereira\", \"Conceição Barbosa\", \"Allen Young\", \"Hernandez King\", \"Wright Lopez\", \"Hill Scott\", \"Green Adams\", \"Conceição da Costa\", \"da Costa Oliveira\", \"Rodrigues de Oliveira\", \"Amaral Neto de Souza\", \"Pereira da Conceição\", \"Barros Neto de Andrade\", \"Borges de Andrade Pereira da Silva\", \"Batista Campos do Amaral\", \"Cardoso de Oliveira\", \"Pontes Guimarães\", \"Dias de Jesus\", \"Barbos de Lima\", \"Gonçalves da Silva\", \"Gonsalves de Lima\", \"Pereira de Oliveira Batista\", \"Dias de Freitas\", \"Ferreira\", \"Garcia da Paixão\", \"Lima Lopes\", \"Jesus da Silva\", \"da Silva de Lima\", \"da Silva Gonsalves Texeira\", \"Fernandes de Paula\", \"de Paula da Silva\", \"Barbosa de Mello Oliveira\", \"Oliveira Neto Conceição da Paixão\"];\r",
+							"\r",
+							"    var randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+							"    \r",
+							"    return randomItem; \r",
+							"}\r",
+							"    \r",
+							"pm.environment.set(\"LastName\", lastName());\r",
+							"\r",
+							"pm.environment.set(\"FullName\", pm.variables.get(\"FirstName\") + \" \" + pm.variables.get(\"LastName\"));\r",
+							"\r",
+							"function mail() {\r",
+							"    pm.environment.set(\"Mail\", pm.variables.replaceIn('{{$guid}}') + \"_\" + pm.variables.get(\"FirstName\") + \"@qacoders-treinamento.com\");\r",
+							"}\r",
+							"\r",
+							"mail()\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check fullName is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"FullName\")).to.eql(JSON.parse(responseBody).user.fullName)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check mail is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"Mail\")).to.eql(JSON.parse(responseBody).user.mail)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check accessProfile is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"AccessProfile\")).to.eql(JSON.parse(responseBody).user.accessProfile)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check idCompany is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"IdCompany\")).to.eql(JSON.parse(responseBody).user.idCompany)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"confirmPassword\": \"{{Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"idCompany\": \"{{IdCompany}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/signup",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login -  Com sucesso",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check fullName is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"FullName\")).to.eql(JSON.parse(responseBody).user.fullName)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check mail is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"Mail\")).to.eql(JSON.parse(responseBody).user.mail)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check accessProfile is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"AccessProfile\")).to.eql(JSON.parse(responseBody).user.accessProfile)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check idCompany is true\", function () {\r",
+							"    pm.expect(pm.variables.get(\"IdCompany\")).to.eql(JSON.parse(responseBody).user.idCompany)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{Password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
