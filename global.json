@@ -36,10 +36,16 @@
 			"value": "Os dados informados são inválidos",
 			"type": "default",
 			"enabled": true
+		},
+		{
+			"key": "teste",
+			"value": "teste",
+			"type": "default",
+			"enabled": true
 		}
 	],
 	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2023-10-17T00:19:35.789Z",
+	"_postman_exported_at": "2023-10-17T00:43:06.635Z",
 	"_postman_exported_using": "Postman/10.19.2"
 }
