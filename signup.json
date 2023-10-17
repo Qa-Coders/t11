@@ -227,7 +227,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Check fullName is true\", function () {\r",
-									"    pm.expect(pm.variables.get(\"FullNameObrigatorio\")).to.eql(JSON.parse(responseBody).alert[0])\r",
+									"    pm.expect(pm.variables.get(\"FullNameObrigatorio\")).to.eql(JSON.parse(responseBody).errors[0])\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -556,7 +556,7 @@
 			]
 		},
 		{
-			"name": "Signup - Cadastro com sucesso",
+			"name": "Signup - Cadastro de usuario com sucesso",
 			"event": [
 				{
 					"listen": "prerequest",
